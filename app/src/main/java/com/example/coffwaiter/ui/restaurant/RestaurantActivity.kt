@@ -8,19 +8,23 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.coffwaiter.databinding.ActivityRestaurantBinding
 import com.example.coffwaiter.dialogs.InfoDialog
+import com.example.coffwaiter.models.Food
 import com.example.coffwaiter.models.Restaurant
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import java.lang.NullPointerException
+import java.util.*
 
-class RestaurantActivity : AppCompatActivity() {
+class RestaurantActivity : AppCompatActivity(), FoodsAdapter.OnFoodsItemClickListener {
 
     private lateinit var binding: ActivityRestaurantBinding
 
     val db = Firebase.firestore
 
-    private var foodsAdapter = FoodsAdapter()
+    private var foodsAdapter = FoodsAdapter(this)
+
+    private var foods: List<Food> = listOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,20 +38,30 @@ class RestaurantActivity : AppCompatActivity() {
 
         val rid = intent.getStringExtra("rid")!!
 
+        binding.searchIv.setOnClickListener {
+            val query = binding.searchDataEt.text.toString()
+
+            foodsAdapter.foods = foods.filter {
+                    food -> food.name!!.toLowerCase(Locale.ROOT).contains(query)
+            }
+        }
+
         db.collection("restaurants").document(rid).get()
             .addOnSuccessListener {
 
-                try {
-                    val restaurant = it.toObject<Restaurant>()
+                val restaurant = it.toObject<Restaurant>()
 
-                    val foods = restaurant?.foods!!
+                if (restaurant?.foods == null) {
+                    Toast.makeText(applicationContext, "QR-код не зарегистрирован", Toast.LENGTH_LONG).show()
+                    finish()
+                    return@addOnSuccessListener
+                }
 
-                    if (foods.isNotEmpty()) {
-                        foodsAdapter.foods = foods
-                        binding.shimmerSfl.visibility = View.GONE
-                    }
-                } catch (e: NullPointerException) {
-                    restaurantNotFound()
+                foods = restaurant.foods
+
+                if (foods.isNotEmpty()) {
+                    foodsAdapter.foods = foods
+                    binding.shimmerSfl.visibility = View.GONE
                 }
             }
             .addOnFailureListener {
@@ -56,11 +70,10 @@ class RestaurantActivity : AppCompatActivity() {
             }
     }
 
-    private fun restaurantNotFound() {
-        Toast.makeText(applicationContext, "QR-код не зарегистрирован", Toast.LENGTH_LONG).show()
-        finish()
+    override fun onFoodsItemClick(food: Food) {
+        Toast.makeText(this, "${food.name}", Toast.LENGTH_SHORT).show()
     }
-
+    
     override fun onResume() {
         super.onResume()
         binding.shimmerSfl.startShimmer()
@@ -70,4 +83,6 @@ class RestaurantActivity : AppCompatActivity() {
         super.onPause()
         binding.shimmerSfl.stopShimmer()
     }
+
+
 }

@@ -1,17 +1,24 @@
 package com.example.coffwaiter.ui.restaurant
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.coffwaiter.databinding.FoodsListItemBinding
 import com.example.coffwaiter.models.Food
 
-class FoodsAdapter: RecyclerView.Adapter<FoodsAdapter.ViewHolder>() {
+class FoodsAdapter(
+    val listener: OnFoodsItemClickListener
+): RecyclerView.Adapter<FoodsAdapter.ViewHolder>() {
 
     inner class ViewHolder(
             private val binding: FoodsListItemBinding
-    ): RecyclerView.ViewHolder(binding.root) {
+    ): RecyclerView.ViewHolder(binding.root), View.OnClickListener {
+
+        init {
+            binding.root.setOnClickListener(this)
+        }
 
         fun bind(food: Food) {
             Glide.with(binding.foodImageIv.context)
@@ -37,6 +44,15 @@ class FoodsAdapter: RecyclerView.Adapter<FoodsAdapter.ViewHolder>() {
                 binding.foodCountTv.text = food.count.toString()
             }
         }
+
+        override fun onClick(view: View) {
+            val food = foods[adapterPosition]
+            listener.onFoodsItemClick(food)
+        }
+    }
+
+    interface OnFoodsItemClickListener {
+        fun onFoodsItemClick(food: Food)
     }
 
     var foods = listOf<Food>()
