@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">OFFwaiter</string>
+
+    <string name="scan_code">Сканировать код</string>
+    <string name="menu">Меню</string>
+    <string name="search">Поиск…</string>
+    <string name="plus">+</string>
+    <string name="zero">0</string>
+    <string name="minus">-</string>
+</resources>

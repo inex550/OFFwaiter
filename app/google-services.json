@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "571197752964",
+    "project_id": "offwaiter",
+    "storage_bucket": "offwaiter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571197752964:android:bd0d4a8db71a3c9b6224d1",
+        "android_client_info": {
+          "package_name": "com.example.coffwaiter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "571197752964-456vml8ccfpq6u50mvt136h4mvk55gl3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKeTJb02-56tuVMEuWsX3GH19-yslKKTA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "571197752964-456vml8ccfpq6u50mvt136h4mvk55gl3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
