@@ -30,16 +30,22 @@ class FoodsAdapter(
 
             binding.priceTv.text = food.price.toString()
 
+            binding.foodCountTv.text = food.count.toString()
+
             binding.plusBtn.setOnClickListener {
-                if (food.count < 99)
+                if (food.count < 99) {
                     food.count += 1
+                    listener.onPlusClick(food)
+                }
 
                 binding.foodCountTv.text = food.count.toString()
             }
 
             binding.minusBtn.setOnClickListener {
-                if (food.count > 0)
+                if (food.count > 0) {
                     food.count -= 1
+                    listener.onMinusClick(food)
+                }
 
                 binding.foodCountTv.text = food.count.toString()
             }
@@ -53,6 +59,9 @@ class FoodsAdapter(
 
     interface OnFoodsItemClickListener {
         fun onFoodsItemClick(food: Food)
+
+        fun onPlusClick(food: Food)
+        fun onMinusClick(food: Food)
     }
 
     var foods = listOf<Food>()

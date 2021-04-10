@@ -71,9 +71,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/minus_btn"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:background="@drawable/ripple_fill_gray_corners_10"
+            style="@style/MiniGrayButton"
             android:text="@string/minus"/>
 
         <TextView
@@ -81,15 +79,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/zero"
+            android:textColor="@color/black"
             android:layout_gravity="center_vertical"
             android:layout_marginHorizontal="8dp"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/plus_btn"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:background="@drawable/ripple_fill_gray_corners_10"
-            android:text="@string/plus"/>
+            android:text="@string/plus"
+            style="@style/MiniGrayButton"/>
 
     </LinearLayout>
 
