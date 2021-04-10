@@ -24,8 +24,6 @@ class FoodInfoBottomSheetFragment(
     ): View {
         _binding = FragmentFoodInfoBinding.inflate(inflater, container, false)
 
-        this.dialog?.window?.setBackgroundDrawableResource(R.drawable.top_corners_16)
-
         Glide.with(requireContext())
             .load(food.logo)
             .into(binding.foodImageIv)
