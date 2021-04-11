@@ -16,4 +16,5 @@
     <string name="uglevods">углеводы</string>
     <string name="cart">Корзина</string>
     <string name="order_zakaz">Оформление заказа</string>
+    <string name="order_process">Заказ обрабатывается</string>
 </resources>

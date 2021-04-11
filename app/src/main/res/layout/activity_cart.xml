@@ -200,6 +200,7 @@
             </RelativeLayout>
 
             <Button
+                android:id="@+id/pay_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/order_zakaz"
