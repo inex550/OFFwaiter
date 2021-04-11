@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.COFFwaiter">
-        <activity android:name=".ui.wait.WaitActivity"></activity>
+        <activity android:name=".ui.wait.WaitActivity"
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="com.google.android.gms.wallet.api.enabled"
@@ -35,20 +36,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        
-        <activity
-            android:name=".ui.status.StatusPage"
-            android:screenOrientation="portrait"
-            />
-        <activity
-            android:name=".ui.ready_order.ReadyOrderPage"
-            android:screenOrientation="portrait"
-            />
-        <activity
-            android:name=".ui.ready_order.ThankYouPage"
-            android:screenOrientation="portrait"
-            />
     </application>
 
 </manifest>

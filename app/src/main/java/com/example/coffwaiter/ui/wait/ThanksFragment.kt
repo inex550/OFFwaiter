@@ -26,9 +26,8 @@ class ThanksFragment: Fragment() {
 
         Handler(Looper.getMainLooper()).postDelayed({
             val startIntent = Intent(requireContext(), StartActivity::class.java)
+            startIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(startIntent)
-
-            requireActivity().finish()
         }, 3000)
     }
 }
