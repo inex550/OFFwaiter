@@ -11,11 +11,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.COFFwaiter">
-        <activity android:name=".ui.ready_order.ReadyOrderPage"/>
-        <activity android:name=".ui.ready_order.ThankYouPage" />
-        <activity android:name=".ui.restaurant.RestaurantActivity" />
-        <activity android:name=".ui.qr_scan.QrScanActivity" />
-        <activity android:name=".ui.start.StartActivity">
+        <activity android:name=".ui.cart.CartActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.status.StatusPage"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".ui.ready_order.ReadyOrderPage"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".ui.ready_order.ThankYouPage"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".ui.restaurant.RestaurantActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.qr_scan.QrScanActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.start.StartActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
