@@ -15,10 +15,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/CapsTextView"
+            style="@style/BoldTextView"
             android:text="@string/menu"/>
 
         <ImageView
+            android:id="@+id/cart_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/basket"
@@ -38,7 +39,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/fill_gray_corners_16"
             android:hint="@string/search"
-            android:padding="12dp"
+            android:padding="8dp"
             android:focusableInTouchMode="true"
             android:focusable="true"
             android:layout_toStartOf="@id/search_iv"/>

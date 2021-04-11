@@ -1,15 +1,18 @@
 package com.example.coffwaiter.ui.restaurant
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.coffwaiter.GlobalData
 import com.example.coffwaiter.databinding.ActivityRestaurantBinding
 import com.example.coffwaiter.dialogs.InfoDialog
 import com.example.coffwaiter.models.Food
 import com.example.coffwaiter.models.Restaurant
+import com.example.coffwaiter.ui.cart.CartActivity
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
@@ -46,9 +49,15 @@ class RestaurantActivity : AppCompatActivity(), FoodsAdapter.OnFoodsItemClickLis
             }
         }
 
+        binding.cartIv.setOnClickListener {
+            GlobalData.cartFoods = foods.filter { it.count > 0 }.toMutableList()
+
+            val cartIntent = Intent(this, CartActivity::class.java)
+            startActivity(cartIntent)
+        }
+
         db.collection("restaurants").document(rid).get()
             .addOnSuccessListener {
-
                 val restaurant = it.toObject<Restaurant>()
 
                 if (restaurant?.foods == null) {
@@ -71,12 +80,20 @@ class RestaurantActivity : AppCompatActivity(), FoodsAdapter.OnFoodsItemClickLis
     }
 
     override fun onFoodsItemClick(food: Food) {
-        Toast.makeText(this, "${food.name}", Toast.LENGTH_SHORT).show()
+        supportFragmentManager.let {
+            FoodInfoBottomSheetFragment(food).apply {
+                show(it, tag)
+            }
+        }
     }
-    
+
+    override fun onPlusClick(food: Food) {}
+    override fun onMinusClick(food: Food) {}
+
     override fun onResume() {
         super.onResume()
         binding.shimmerSfl.startShimmer()
+        foodsAdapter.notifyDataSetChanged()
     }
 
     override fun onPause() {

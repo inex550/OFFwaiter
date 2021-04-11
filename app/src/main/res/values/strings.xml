@@ -7,4 +7,13 @@
     <string name="plus">+</string>
     <string name="zero">0</string>
     <string name="minus">-</string>
+    <string name="about_pizza">Пшеничная мука, яйцо куриное, молоко сухое, подсолнечное масло, помидор, сыр моцарелла, куриная грудка, шампиньоны, майонез, сыр.</string>
+    <string name="ruble">₽</string>
+    <string name="gramm">грамм</string>
+    <string name="kkal">ккал</string>
+    <string name="belki">белки</string>
+    <string name="jirs">жиры</string>
+    <string name="uglevods">углеводы</string>
+    <string name="cart">Корзина</string>
+    <string name="order_zakaz">Оформление заказа</string>
 </resources>
